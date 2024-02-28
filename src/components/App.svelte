@@ -10,6 +10,13 @@
 
   onMount(async () => {
     large_people_data = await d3.csv('large_people.csv', d3.autoType);
+
+    // const text = JSON.stringify(large_people_data);
+    // const root = d3.hierarchy(text)
+    // console.log(root)
+    
+
+
   });
   
 

@@ -25,15 +25,52 @@ let spacingwidth = 50
 let spacingwidth_1 = 40
 let spacingwidth_2 = 70
 let spacingheight  = 20
-console.log(firstRow['Data_descipt'])
+
+// const data = {
+//   id: 1,
+//   children: [
+//     {name: "Cain"},
+//     {name: "Seth", children: [{name: "Enos"}, {name: "Noam"}]},
+//     {name: "Abel"},
+//     {name: "Awan", children: [{name: "Enoch"}]},
+//     {name: "Azura"}
+//   ]
+// };
+
+const data = {
+    id : 0, 
+    children: [
+        {id:1, stat:1, data_descript: "One person", children:[
+            {id: 2, stat: 100, data_descript: "Number of audience in DSC 106 watching the demo", children:[
+                {id: 3, stat: 3000, data_descript: "Successful twitch streamer's daily views", children:[
+                    {id: 4, stat: 70000, data_descript: "Capacity of sofi stadium", children: [
+                        {id: 5, stat: 1000000, data_descript: "Number of subscriber in youtube for a gold button", children: [
+                            {id: 6, stat: 24000000, data_descript:"Jacksepticey's subscriber", children: [
+                                {id: 7, stat: 240000000, data_descript:"Mr. Beast's subscriber"}
+                            ]}
+                        ]}
+                    ]}
+                ]}
+            ]}
+
+        ]}]
+};
 
 
+console.log(data)
+const root = d3.hierarchy(data)
+console.log(root)
+
+function children(d) {
+  return d.children;
+}
+console.log(children(root))
 
 
 </script>
 
 
-<svg {width} {height} viewBox="0 0 {width} {height}">
+<!-- <svg {width} {height} viewBox="0 0 {width} {height}">
     <g id = 'Row1'stroke="black" stroke-width="0.5" transform="translate(0, 50)">
         <text font-size="50">{firstRow['Stat']} people</text>
         <text transform="translate(0, 30)"> Description: {firstRow['Data_descipt']}</text>
@@ -117,14 +154,7 @@ console.log(firstRow['Data_descipt'])
         </g>
         <text transform="translate(0, 50)"> Description: {seventhRow['Data_descipt']}</text>
     </g>
-</svg>
-
-
-
-
-
-
-
+</svg> -->
 
 <style>
 
