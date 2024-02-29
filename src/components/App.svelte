@@ -9,7 +9,7 @@
   let large_people_data = [];
 
   onMount(async () => {
-    large_people_data = await d3.csv('large_people.csv', d3.autoType);
+    large_people_data = await d3.csv('large_people_2.csv', d3.autoType);
 
     // const text = JSON.stringify(large_people_data);
     // const root = d3.hierarchy(text)
@@ -41,7 +41,7 @@
     <LargePeople {large_people_data} />
   {/if}
 
-  
+
 
 </main>
 
