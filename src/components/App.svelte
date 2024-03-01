@@ -2,6 +2,7 @@
   // Write your JS here, or import other files
   import * as d3 from 'd3';
   import LargePeople from './LargePeople.svelte';
+  import SmallNums from './SmallNums(working).svelte'
 </script>
 
 <main>
@@ -15,7 +16,14 @@
     Our group aims to visually illustrate how much humans underestimate these scales, and how difficult they can be to interpret without a visual guide. 
   </p>
   
-
+  <p>
+    Ever wondered how small molecules really are? Water moluecules are about 0.27 nanometers across, but what does that really mean?
+    <br>
+    The width of the brown box below represents the width of an average human hair. Along the hair, water molecules are lined up side by side.
+    <br>
+    Cant see them? Try zooming in
+  </p>
+  <SmallNums /> 
 </main>
 
 <style>
