@@ -5,7 +5,7 @@ import { onMount } from 'svelte';
 import * as d3 from 'd3';
 
 const width = 1500;
-const height = 1500;
+const height = 300;
 
 export const firstRow = large_people_data[0]
 export const secondRow = large_people_data[1]

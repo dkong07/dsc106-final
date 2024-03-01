@@ -11,16 +11,10 @@
   onMount(async () => {
     large_people_data = await d3.csv('large_people_2.csv', d3.autoType);
 
-    // const text = JSON.stringify(large_people_data);
-    // const root = d3.hierarchy(text)
-    // console.log(root)
-    
-
-
   });
   
-
-
+  import SmallNums from './SmallNums(working).svelte'
+  import Moneyapp from './Moneyapp.svelte';
 </script>
 
 <main>
@@ -40,11 +34,27 @@
   {:else}
     <LargePeople {large_people_data} />
   {/if}
+  
+  <p>
+    Ever wondered how small molecules really are? Water moluecules are about 0.27 nanometers across, but what does that really mean?
+    <br>
+    The width of the brown box below represents the width of an average human hair. Along the hair, water molecules are lined up side by side.
+    <br>
+    Cant see them? Try zooming in
+  </p>
+
+  <div id='small nums'>
+    <SmallNums/> 
+  </div>
 
 
-
+  <div id='money'>
+    <Moneyapp/>
+  </div>
 </main>
 
 <style>
-
+  /* .main{
+    background-color: blanchedalmond;
+  } */
 </style>
