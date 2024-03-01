@@ -3,6 +3,7 @@
   import * as d3 from 'd3';
   import LargePeople from './LargePeople.svelte';
   import SmallNums from './SmallNums(working).svelte'
+    import Moneyapp from './Moneyapp.svelte';
 </script>
 
 <main>
@@ -23,9 +24,18 @@
     <br>
     Cant see them? Try zooming in
   </p>
-  <SmallNums /> 
+  <div id='small nums'>
+    <SmallNums /> 
+  </div>
+
+
+  <div id='money'>
+    <Moneyapp/>
+  </div>
 </main>
 
 <style>
-  /* Write your CSS here */
+  .main{
+    background-color: blanchedalmond;
+  }
 </style>
