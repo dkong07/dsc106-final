@@ -28,7 +28,7 @@
     Our group aims to visually illustrate how much humans underestimate these scales, and how difficult they can be to interpret without a visual guide. 
   </p>
 
-  <h2>Visualizing large numbers of people</h2>
+  <!-- <h2>Visualizing large numbers of people</h2> -->
   {#if large_people_data.length === 0}
     <p>Loading...</p>
   {:else}
