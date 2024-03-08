@@ -86,7 +86,7 @@ function createButton_in() {
       .append('button') // Append a button element
       .text('Scope in') // Set the text content of the button
       .on('click', handleClick_in) // Add a click event listener
-      .style('font-size', '22px') // Set the font size
+      .style('font-size', '28px') // Set the font size
       .style('font-family', 'VT323, monospace') // Set the font family
       .style('width', '130px') // Set the width of the button
       .style('height', '45px') // Set the height of the button
@@ -99,7 +99,7 @@ function createButton_out() {
       .append('button') // Append a button element
       .text('Scope out') // Set the text content of the button
       .on('click', handleClick_out) // Add a click event listener
-      .style('font-size', '22px') // Set the font size
+      .style('font-size', '28px') // Set the font size
       .style('font-family', 'VT323, monospace') // Set the font family
       .style('width', '130px') // Set the width of the button
       .style('height', '45px') // Set the height of the button
@@ -112,7 +112,6 @@ onMount(() => {
   });
 
 </script>
-<div class = 'everything'>
 <br>
 <h2>Part 1: Visualizing large numbers of peoples</h2>
 
@@ -135,14 +134,14 @@ onMount(() => {
     <div class="zoom_in"></div> 
     <div class="zoom_out"></div>
 </div>
-</div>
 
+<div class = 'content'>
 <svg {width} {height} viewBox="0 0 {width} {height}">
-    <g stroke="black" stroke-width="0.5" transform="translate(300, 40)" class = "layer" id = 'Row1'>
+    <g stroke="black" stroke-width="0.5" transform="translate(530, 40)" class = "layer" id = 'Row1'>
         <text transform="translate(100, 50)" font-size="75">{firstRow['Stat']}</text>
         <text font-size="25" transform="translate(0, 90)"> Description: {firstRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" transform="translate(0,40)" class = "layer" id = 'Row2'>
+    <g stroke="black" stroke-width="0.5" transform="translate(330,40)" class = "layer" id = 'Row2'>
         <g transform="translate(30, 0)">
             {#each iterations10 as i, indexh}
                 {#each iterations10 as j, index}
@@ -155,7 +154,7 @@ onMount(() => {
         </g>
         <text font-size="25" transform="translate(0, 220)"> Description: {secondRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row3'>
+    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row3' transform="translate(230,0)">
         <g transform="translate(30, 40)" font-size="20">
             {#each iterations5 as i, indexh}
                 {#each iterations6 as j, index}
@@ -165,12 +164,12 @@ onMount(() => {
         </g>
         <g>
             <text font-size="50" transform="translate(400, 150)"> = </text>
-            <text font-size="40" transform="translate(450, 120)" fill="brown"> 30 rooms of DSC 106 student watching demo</text>
+            <text font-size="40" transform="translate(450, 120)" fill="brown"> 30 rooms of DSC 106 student</text>
             <text font-size="40" transform="translate(450, 180)" fill="brown"> 3K people</text>
         </g>
         <text font-size="25" transform="translate(0, 285)"> Description: {thirdRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row4'>
+    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row4' transform="translate(230,0)">
         <g transform="translate(10, 50)" font-size="25">
             {#each iterations4 as i, indexh}
                 {#each iterations6 as j, index}
@@ -185,7 +184,7 @@ onMount(() => {
         </g>
         <text font-size="25" transform="translate(0, 240)"> Description: {forthRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row5'>
+    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row5' transform="translate(330,0)">
         <g transform="translate(10, 50)" font-size="25">
             {#each iterations4 as i, indexh}
                 {#each iterations5 as j, index}
@@ -201,13 +200,15 @@ onMount(() => {
         <text font-size="25" transform="translate(10, 240)"> Description: {fifthRow['Data_descipt']}</text>
     </g>
 </svg>
+</div>
 
 
 <style>
 .buttons {
-  display: flex; /* Use flexbox layout */
-  margin-top: 10px;
-  margin-left : 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px; /* Set a fixed height for the container */
 }
 
 .zoom_in{
@@ -236,17 +237,6 @@ onMount(() => {
     display: none;
 }
 
-/* .everything { */
-    /* display: flex; */
-    /* text-align: center;
-    justify-content: center;
-    align-items: center;
-
-    display: flex;
-    flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: center; */
-/* } */
 
 
 </style>
