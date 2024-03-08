@@ -19,6 +19,17 @@
     ctx.strokeStyle = '#8B4513'; 
     ctx.stroke();
 
+    ctx.beginPath();
+    ctx.moveTo(0, 200);
+    ctx.lineTo(1200, 200);
+    ctx.lineWidth = 50;
+    ctx.strokeStyle = 'orange'; 
+    ctx.stroke();
+
+    ctx.font = '20px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText(`Width of human hair ➗ ${zoom}`, 500, 195);
+
     const numberOfMolecules = (hairWidthNm/waterMoleculeLengthNm)/zoom
     const step = 1200/numberOfMolecules
     
