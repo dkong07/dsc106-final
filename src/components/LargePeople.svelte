@@ -116,7 +116,7 @@ onMount(() => {
 <h2>Part 1: Visualizing large numbers of peoples</h2>
 
 <p>
-    The rise of the internet has allowed people to make connections around the world and this has led to popularity in multiple social media platforms such as Instagram, TikTok, Twitch, etc    <br>
+    <!-- The rise of the internet has allowed people to make connections around the world and this has led to popularity in multiple social media platforms such as Instagram, TikTok, Twitch, etc    <br>
     These platforms often have their ways of quantifying the popularity of those users through likes and views.
     <br><br>
     Our group first wants to get your attention to ask if you understand what these numbers look like.
@@ -124,7 +124,7 @@ onMount(() => {
     For example, when you see 500K views on TikTok, we all agree that it is a large number, but have you ever imagined how much 500K people look like? It doesn't even fit the largest stadium in the world!
     <br>
     These numbers can scale up quickly, but when you put into perspective that each 1s that make up these huge numbers is human, we have difficulties understanding them.
-    <br><br>
+    <br><br> -->
     This visualization below is intended to show you how much these numbers of people can scale up to give you a better understanding of what a large population can look like.
     <br>
     Click on the "Scope in" and "Scope out" buttons to toggle through the scale!

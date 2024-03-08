@@ -24,7 +24,10 @@
   <div class = 'all'>
   <div class = "intro">
   <h1 class = 'Title'>Visualizing Numbers</h1>
+  <h4>Group name: SEAL TEAM 420 <br> Member: Hunter Brownell, Daniel Kong, Jill Nomura</h4>
 
+  <br>
+  <h3>Introduction</h3>
   <p>
     The interesting phenomenon our group wants to focus on is how humans struggle to understand the scale of numbers, both large and small.
     <br>
@@ -66,6 +69,7 @@
   .Title{
     font-family: "VT323", monospace;
     font-size: 60px;
+    margin: 0px;
   }
   .all{
     background-color: lightcyan;
