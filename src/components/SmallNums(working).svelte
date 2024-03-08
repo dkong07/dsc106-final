@@ -19,6 +19,17 @@
     ctx.strokeStyle = '#8B4513'; 
     ctx.stroke();
 
+    ctx.beginPath();
+    ctx.moveTo(0, 200);
+    ctx.lineTo(1200, 200);
+    ctx.lineWidth = 50;
+    ctx.strokeStyle = 'orange'; 
+    ctx.stroke();
+
+    ctx.font = '20px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText(`Width of human hair ➗ ${zoom}`, 500, 195);
+
     const numberOfMolecules = (hairWidthNm/waterMoleculeLengthNm)/zoom
     const step = 1200/numberOfMolecules
     
@@ -44,6 +55,6 @@
 <div>
     <label for="zoom">Zoom:</label>
     <input type="range" id="zoom" min="1" max="10000" value={zoom} on:input="{e => zoom = +e.target.value}" />
-    <span>{"Multiplier: "}{zoom}</span>
+  
 </div>
 <canvas id="visualizationCanvas" width="1200" height="200" style="border: 1px solid black;"></canvas>

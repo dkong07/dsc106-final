@@ -17,8 +17,13 @@
   import Moneyapp from './Moneyapp.svelte';
 </script>
 
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
 <main>
-  <h1>Visualizing Numbers</h1>
+  <div class = 'all'>
+  <div class = "intro">
+  <h1 class = 'Title'>Visualizing Numbers</h1>
 
   <p>
     The interesting phenomenon our group wants to focus on is how humans struggle to understand the scale of numbers, both large and small.
@@ -27,6 +32,7 @@
     <br>
     Our group aims to visually illustrate how much humans underestimate these scales, and how difficult they can be to interpret without a visual guide. 
   </p>
+  </div>
 
   <!-- <h2>Visualizing large numbers of people</h2> -->
   {#if large_people_data.length === 0}
@@ -34,7 +40,9 @@
   {:else}
     <LargePeople {large_people_data} />
   {/if}
-  
+  <br>
+
+  <h2>Part 2: Visualizing Size of Molecule in Comparison with of Human Hair</h2>
   <p>
     Ever wondered how small molecules really are? Water moluecules are about 0.27 nanometers across, but what does that really mean?
     <br>
@@ -51,10 +59,18 @@
   <div id='money'>
     <Moneyapp/>
   </div>
+  </div>
 </main>
 
 <style>
-  /* .main{
-    background-color: blanchedalmond;
-  } */
+  .Title{
+    font-family: "VT323", monospace;
+    font-size: 60px;
+  }
+  .all{
+    background-color: lightcyan;
+    text-align: center; /* Center-align the text */
+
+    
+  }
 </style>
