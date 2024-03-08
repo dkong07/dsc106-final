@@ -55,6 +55,6 @@
 <div>
     <label for="zoom">Zoom:</label>
     <input type="range" id="zoom" min="1" max="10000" value={zoom} on:input="{e => zoom = +e.target.value}" />
-    <span>{"Multiplier: "}{zoom}</span>
+  
 </div>
 <canvas id="visualizationCanvas" width="1200" height="200" style="border: 1px solid black;"></canvas>
