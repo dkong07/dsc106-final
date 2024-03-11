@@ -77,4 +77,7 @@
 
     
   }
+  .main{
+    height: fit-content;
+  }
 </style>
