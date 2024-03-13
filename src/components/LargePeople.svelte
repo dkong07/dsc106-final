@@ -4,7 +4,7 @@ export let large_people_data;
 import { onMount } from 'svelte';
 import * as d3 from 'd3';
 
-const width = 1300;
+const width = 800;
 const height = 300;
 
 export const firstRow = large_people_data[0]
@@ -138,11 +138,11 @@ onMount(() => {
 
 <div class = 'content'>
 <svg {width} {height} viewBox="0 0 {width} {height}">
-    <g stroke="black" stroke-width="0.5" transform="translate(0, 100)" class = "layer" id = 'Row1'>
+    <g stroke="black" stroke-width="0.5" transform="translate(270, 100)" class = "layer" id = 'Row1'>
         <text transform="translate(100, 50)" font-size="75">{firstRow['Stat']}</text>
         <text font-size="25" transform="translate(0, 90)"> Description: {firstRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" transform="translate(0,40)" class = "layer" id = 'Row2'>
+    <g stroke="black" stroke-width="0.5" transform="translate(30,40)" class = "layer" id = 'Row2'>
         <g transform="translate(30, 0)">
             let first = 1;
             {#each iterations10 as i, indexh}
@@ -156,7 +156,7 @@ onMount(() => {
         </g>
         <text font-size="25" transform="translate(0, 220)"> Description: {secondRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row3' transform="translate(0,0)">
+    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row3' transform="translate(100,0)">
         <g transform="translate(30, 40)" font-size="20">
             {#each iterations5 as i, indexh}
                 {#each iterations6 as j, index}
@@ -176,7 +176,7 @@ onMount(() => {
         </g>
         <text font-size="25" transform="translate(0, 285)"> Description: {thirdRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row4' transform="translate(0,0)">
+    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row4' transform="translate(100,10)">
         <g transform="translate(10, 50)" font-size="25">
             {#each iterations4 as i, indexh}
                 {#each iterations6 as j, index}
@@ -194,7 +194,7 @@ onMount(() => {
         </g>
         <text font-size="25" transform="translate(0, 240)"> Description: {forthRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row5' transform="translate(0,0)">
+    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row5' transform="translate(80,10)">
         <g transform="translate(10, 50)" font-size="25">
             {#each iterations4 as i, indexh}
                 {#each iterations5 as j, index}
