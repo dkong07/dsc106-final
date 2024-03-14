@@ -21,7 +21,7 @@
 
     ctx.font = '20px Arial';
     ctx.fillStyle = 'black';
-    ctx.fillText(`Width of human hair ➗ ${zoom}`, 500, 160);
+    ctx.fillText(`Width of human hair ➗ ${zoom}`, 500, 170);
 
     const numberOfMolecules = (hairWidthNm/waterMoleculeLengthNm)/zoom
     const step = 1200/numberOfMolecules
