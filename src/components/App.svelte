@@ -45,9 +45,9 @@
   {/if}
   <br>
 
-  <h2>Part 2: Visualizing Size of Molecule in Comparison with of Human Hair</h2>
+  <h2>Part 2: Visualizing Size of Water Molecules in Comparison to a Human Hair</h2>
   <p>
-    Ever wondered how small molecules really are? Water moluecules are about 0.27 nanometers across, but what does that really mean?
+    Ever wondered how small molecules really are? Water moluecules are about 0.27 nanometers (or 0.000000027 centimeters) across, but what does that really mean?
     <br>
     The width of the brown box below represents the width of an average human hair. Along the hair, water molecules are lined up side by side.
     <br>
