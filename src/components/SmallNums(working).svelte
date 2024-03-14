@@ -59,7 +59,9 @@
     ctx.fillText(`(MAX ZOOM)`, 780, 170);
   }
   }
-
+  function resetZoom(input){
+    zoom = input
+  }
   function setZoom(level) {
     if ((zoom*level) <= 10000){
       zoom = zoom*level
@@ -79,6 +81,8 @@
 </script>
 
 <div>
+  <button on:click="{() => resetZoom(1)}">Reset Zoom</button>
+  <button on:click="{() => setZoom(2)}">Zoom 2x</button>
   <button on:click="{() => setZoom(100)}">Zoom 100x</button>
   <button on:click="{() => setZoom(5000)}">Zoom 5,000x</button>
   <button on:click="{() => setZoom(10000)}">Zoom 10,000x</button>
