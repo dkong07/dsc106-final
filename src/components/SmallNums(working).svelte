@@ -84,7 +84,7 @@
   <button on:click="{() => resetZoom(1)}">Reset Zoom</button>
   <button on:click="{() => setZoom(2)}">Zoom 2x</button>
   <button on:click="{() => setZoom(100)}">Zoom 100x</button>
-  <button on:click="{() => setZoom(10000)}">Zoom 10,000x</button>
+  <button on:click="{() => setZoom(10000)}">Max Zoom</button>
   <label for="zoom">Zoom:</label>
   <input type="range" id="zoom" min="1" max="10000" value={zoom} on:input="{e => zoom = +e.target.value}" />
 </div>
