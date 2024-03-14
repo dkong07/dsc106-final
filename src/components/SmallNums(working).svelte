@@ -19,10 +19,6 @@
     ctx.strokeStyle = '#B8833F'; 
     ctx.stroke();
 
-    ctx.font = '20px Arial';
-    ctx.fillStyle = 'black';
-    ctx.fillText(`Width of human hair ➗ ${zoom}`, 500, 250);
-
     const numberOfMolecules = (hairWidthNm/waterMoleculeLengthNm)/zoom
     const step = 1200/numberOfMolecules
     
@@ -52,6 +48,25 @@
     ctx.lineTo(1198, 240);
     ctx.lineWidth = 5;
     ctx.stroke();  
+
+    ctx.font = '40px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText(`Box Width =`, 220, 280);
+
+    ctx.font = '24px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText(`Width of human hair (80,000 nanometers)`, 465, 260);
+
+    ctx.beginPath();
+    ctx.moveTo(460, 268); 
+    ctx.lineTo(920, 268);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'black'; 
+    ctx.stroke();
+
+    ctx.font = '24px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText(`${zoom}`, 660, 300);
 
     if (zoom === 10000) {
     ctx.font = '20px Arial';
@@ -87,4 +102,4 @@
   <label for="zoom">Zoom:</label>
   <input type="range" id="zoom" min="1" max="10000" value={zoom} on:input="{e => zoom = +e.target.value}" />
 </div>
-<canvas id="visualizationCanvas" width="1200" height="260" style="border: 1px solid black;"></canvas>
+<canvas id="visualizationCanvas" width="1200" height="330" style="border: 0px solid black;"></canvas>
