@@ -52,9 +52,20 @@
     ctx.lineTo(1198, 200);
     ctx.lineWidth = 5;
     ctx.stroke();  
+
+    if (zoom === 10000) {
+    ctx.font = '20px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText(`(MAX ZOOM)`, 780, 170);
   }
+  }
+
   function setZoom(level) {
-    zoom = level;
+    if ((zoom*level) <= 10000){
+      zoom = zoom*level
+    } else {
+      zoom = 10000
+    }  
   }
 
   onMount(() => {
