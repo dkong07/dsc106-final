@@ -21,7 +21,7 @@
 
     ctx.font = '20px Arial';
     ctx.fillStyle = 'black';
-    ctx.fillText(`Width of human hair ➗ ${zoom}`, 500, 170);
+    ctx.fillText(`Width of human hair ➗ ${zoom}`, 500, 250);
 
     const numberOfMolecules = (hairWidthNm/waterMoleculeLengthNm)/zoom
     const step = 1200/numberOfMolecules
@@ -35,29 +35,29 @@
     }
 
     ctx.beginPath();
-    ctx.moveTo(0, 180); 
-    ctx.lineTo(1200, 180);
+    ctx.moveTo(0, 220); 
+    ctx.lineTo(1200, 220);
     ctx.lineWidth = 5;
     ctx.strokeStyle = 'black'; 
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.moveTo(2, 160); 
-    ctx.lineTo(2, 200); 
+    ctx.moveTo(2, 200); 
+    ctx.lineTo(2, 240); 
     ctx.lineWidth = 5;
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.moveTo(1198, 160); 
-    ctx.lineTo(1198, 200);
+    ctx.moveTo(1198, 200); 
+    ctx.lineTo(1198, 240);
     ctx.lineWidth = 5;
     ctx.stroke();  
 
     if (zoom === 10000) {
     ctx.font = '20px Arial';
     ctx.fillStyle = 'black';
-    ctx.fillText(`(MAX ZOOM)`, 780, 170);
-  }
+    ctx.fillText(`(MAX ZOOM)`, 570, 170);
+    }
   }
   function resetZoom(input){
     zoom = input
@@ -69,7 +69,6 @@
       zoom = 10000
     }  
   }
-
   onMount(() => {
     draw();
   });
@@ -88,4 +87,4 @@
   <label for="zoom">Zoom:</label>
   <input type="range" id="zoom" min="1" max="10000" value={zoom} on:input="{e => zoom = +e.target.value}" />
 </div>
-<canvas id="visualizationCanvas" width="1200" height="200" style="border: 1px solid black;"></canvas>
+<canvas id="visualizationCanvas" width="1200" height="260" style="border: 1px solid black;"></canvas>
