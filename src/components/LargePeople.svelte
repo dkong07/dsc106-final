@@ -25,6 +25,32 @@ let spacingheight_1  = 20
 
 
 let page_on = 1;
+let mouseX = 0;
+let mouseY = 0;
+let tooltipOffsetX = 10; // Offset from the mouse cursor horizontally
+let tooltipOffsetY = -20;
+
+let isHovered = false; // A reactive property to track hover state
+
+  // Function to handle mouseover event
+  function handleMouseOver() {
+    isHovered = true; // Set isHovered to true when mouse hovers over
+    updateTooltipPosition(event);
+
+  }
+
+  // Function to handle mouseout event
+  function handleMouseOut() {
+    isHovered = false; // Set isHovered to false when mouse moves out
+  }
+  
+  function updateTooltipPosition(event) {
+    const svgRect = event.target.getBoundingClientRect();
+
+    mouseX = event.clientX + tooltipOffsetX;
+    mouseY = event.clientY + tooltipOffsetY;
+
+  }
 
 function handleClick_in() {
     if (page_on == 1){
@@ -51,6 +77,7 @@ function handleClick_in() {
             prevPage.style.display = 'block';
 
         }, 500); // Wait for the transition duration
+        console.log(page_on)
     }
   }
 
@@ -78,6 +105,7 @@ function handleClick_out() {
             nextPage.style.display = 'block';
 
         }, 500); // Wait for the transition duration
+        console.log(page_on)
     }
   }
 
@@ -90,7 +118,7 @@ function createButton_in() {
       .style('font-family', 'VT323, monospace') // Set the font family
       .style('width', '130px') // Set the width of the button
       .style('height', '45px') // Set the height of the button
-      .style('background-color', 'beige'); // Set the background color of the button
+      .style('background-color', 'lavender'); // Set the background color of the button
 
   }
 
@@ -103,14 +131,13 @@ function createButton_out() {
       .style('font-family', 'VT323, monospace') // Set the font family
       .style('width', '130px') // Set the width of the button
       .style('height', '45px') // Set the height of the button
-      .style('background-color', 'beige'); // Set the background color of the button
+      .style('background-color', 'lavender'); // Set the background color of the button
   }
 
 onMount(() => {
     createButton_in();
     createButton_out();
   });
-
 
 </script>
 <br>
@@ -170,11 +197,14 @@ onMount(() => {
                 {/each}
             {/each}
         </g>
-        <g>
+        <g >
             <text font-size="50" transform="translate(400, 150)"> = </text>
+            <g>
             <text font-size="40" transform="translate(450, 150)" fill="brown"> 3K people</text>
+            <rect x=445 y=110 width=190 height=50 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.2 role="presentation"/>
+            </g>
         </g>
-        <text font-size="25" transform="translate(0, 285)"> Description: {thirdRow['Data_descipt']}</text>
+        <text font-size="25" transform="translate(-80, 285)"> Description: {thirdRow['Data_descipt']}</text>
     </g>
     <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row4' transform="translate(100,10)">
         <g transform="translate(10, 50)" font-size="25">
@@ -190,7 +220,10 @@ onMount(() => {
         </g>
         <g>
             <text font-size="50" transform="translate(400, 130)"> = </text>
-            <text font-size="40" transform="translate(450, 130)" fill="green"> 70K people</text>
+            <g>
+                <text font-size="40" transform="translate(450, 130)" fill="green"> 70K people</text>
+                <rect x=445 y=90 width=210 height=50 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.2 role="presentation"/>
+            </g>
         </g>
         <text font-size="25" transform="translate(0, 240)"> Description: {forthRow['Data_descipt']}</text>
     </g>
@@ -208,10 +241,41 @@ onMount(() => {
         </g>
         <g>
             <text font-size="50" transform="translate(410, 130)"> = </text>
-            <text font-size="40" transform="translate(460, 130)" fill="red"> 1.3M  people</text>
+            <g>
+                <text font-size="40" transform="translate(460, 130)" fill="red"> 1.3M  people</text>
+                <rect x=455 y=90 width=235 height=50 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.2 role="presentation"/>
+            </g>    
         </g>
         <text font-size="25" transform="translate(10, 240)"> Description: {fifthRow['Data_descipt']}</text>
     </g>
+
+    {#if isHovered && page_on === 3}
+        <g transform="translate(600, 220)">
+            <!-- Tooltip box -->
+            <rect x="0" y="-45" width="190" height="90" fill="lightyellow" stroke="black" />
+            <!-- Text inside tooltip -->
+            <text x="20" y="-25" font-size="12" fill="black">Page 3</text>
+            <text x="20" y="-10" font-size="12" fill="black">Additional Text</text>
+        </g>
+    {/if}
+    {#if isHovered && page_on === 4}
+        <g transform="translate(600, 220)">
+            <!-- Tooltip box -->
+            <rect x="0" y="-45" width="190" height="90" fill="lightyellow" stroke="black" />
+            <!-- Text inside tooltip -->
+            <text x="20" y="-25" font-size="12" fill="black">Tooltip Page 4</text>
+            <text x="20" y="-10" font-size="12" fill="black">Additional Text</text>
+        </g>
+    {/if}
+    {#if isHovered && page_on === 5}
+        <g transform="translate(600, 220)">
+            <!-- Tooltip box -->
+            <rect x="0" y="-45" width="190" height="90" fill="lightyellow" stroke="black" />
+            <!-- Text inside tooltip -->
+            <text x="20" y="-25" font-size="12" fill="black">Tooltip Page 5</text>
+            <text x="20" y="-10" font-size="12" fill="black">Additional Text</text>
+        </g>
+    {/if}
 </svg>
 </div>
 
