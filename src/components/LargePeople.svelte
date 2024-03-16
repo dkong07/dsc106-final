@@ -5,7 +5,7 @@ import { onMount } from 'svelte';
 import * as d3 from 'd3';
 
 const width = 800;
-const height = 300;
+const height = 320;
 
 export const firstRow = large_people_data[0]
 export const secondRow = large_people_data[1]
@@ -249,33 +249,45 @@ onMount(() => {
 
     {#if isHovered && page_on === 3}
         <g transform="translate(600, 220)">
-            <!-- Tooltip box -->
             <rect x="0" y="-45" width="190" height="90" fill="lightyellow" stroke="yellow" />
-            <!-- Text inside tooltip -->
+
             <text x="35" y="-15" font-size="18" fill="black">Equivalates to...</text>
+
             <text x="5" y="10" font-size="14" fill="black">30 rooms of DSC 106 student </text>
             <text x="30" y="25" font-size="14" fill="black">watching the demo!!</text>
         </g>
     {/if}
     {#if isHovered && page_on === 4}
         <g transform="translate(600, 220)">
-            <!-- Tooltip box -->
-            <rect x="0" y="-45" width="190" height="80" fill="lightyellow" stroke="yellow" />
-            <!-- Text inside tooltip -->
-            <text x="40" y="-25" font-size="18" fill="black">Equivalates to...</text>
-            <text x="20" y="-5" font-size="14" fill="black">24 twitch streemers with 3000 daily views</text>
-            <text x="20" y="10" font-size="14" fill="black">700 rooms of DSC 106 student watching the demo!!</text>
+            <rect x="0" y="-45" width="190" height="120" fill="lightyellow" stroke="yellow" />
+
+            <text x="35" y="-25" font-size="18" fill="black">Equivalates to...</text>
+
+            <text x="20" y="0" font-size="14" fill="black">24 twitch streemers with</text>
+            <text x="40" y="15" font-size="14" fill="black">3000 daily views</text>
+
+            <text x="80" y="35" font-size="16" fill="black">OR</text>
+
+            <text x="30" y="50" font-size="14" fill="black">700 rooms of DSC 106</text>
+            <text x="5" y="65" font-size="14" fill="black">student watching the demo!!</text>
         </g>
     {/if}
     {#if isHovered && page_on === 5}
         <g transform="translate(600, 220)">
-            <!-- Tooltip box -->
-            <rect x="0" y="-45" width="190" height="90" fill="lightyellow" stroke="yellow" />
-            <!-- Text inside tooltip -->
-            <text x="40" y="-25" font-size="18" fill="black">Equivalates to...</text>
-            <text x="20" y="-5" font-size="14" fill="black">20 Sofi Stadium</text>
-            <text x="20" y="10" font-size="14" fill="black">440 twitch streemers with 3000 daily views</text>
-            <text x="20" y="25" font-size="14" fill="black">13000 rooms of DSC 106 student watching the demo!!</text>
+            <rect x="-100" y="-45" width="290" height="140" fill="lightyellow" stroke="yellow" />
+
+            <text x="-10" y="-25" font-size="18" fill="black">Equivalates to...</text>
+
+            <text x="0" y="0" font-size="14" fill="black">20 Sofi Stadium</text>
+
+            <text x="30" y="20" font-size="16" fill="black">OR</text>
+
+            <text x="-85" y="35" font-size="14" fill="black">440 twitch streemers with 3000 daily views</text>
+
+            <text x="30" y="55" font-size="16" fill="black">OR</text>
+
+            <text x="-45" y="70" font-size="14" fill="black">13000 rooms of DSC 106 student </text>
+            <text x="-10" y="85" font-size="14" fill="black">watching the demo!!</text>
         </g>
     {/if}
 </svg>
