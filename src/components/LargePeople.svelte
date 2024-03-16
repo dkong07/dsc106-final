@@ -4,8 +4,8 @@ export let large_people_data;
 import { onMount } from 'svelte';
 import * as d3 from 'd3';
 
-const width = 1300;
-const height = 300;
+const width = 800;
+const height = 320;
 
 export const firstRow = large_people_data[0]
 export const secondRow = large_people_data[1]
@@ -25,6 +25,30 @@ let spacingheight_1  = 20
 
 
 let page_on = 1;
+let mouseX = 0;
+let mouseY = 0;
+let tooltipOffsetX = 10; 
+let tooltipOffsetY = -20;
+
+let isHovered = false;
+
+  function handleMouseOver() {
+    isHovered = true; 
+    updateTooltipPosition(event);
+
+  }
+
+  function handleMouseOut() {
+    isHovered = false; 
+  }
+  
+  function updateTooltipPosition(event) {
+    const svgRect = event.target.getBoundingClientRect();
+
+    mouseX = event.clientX + tooltipOffsetX;
+    mouseY = event.clientY + tooltipOffsetY;
+
+  }
 
 function handleClick_in() {
     if (page_on == 1){
@@ -50,7 +74,8 @@ function handleClick_in() {
             prevPage.style.opacity = '1';
             prevPage.style.display = 'block';
 
-        }, 500); // Wait for the transition duration
+        }, 500);
+        console.log(page_on)
     }
   }
 
@@ -77,33 +102,34 @@ function handleClick_out() {
             nextPage.style.opacity = '1';
             nextPage.style.display = 'block';
 
-        }, 500); // Wait for the transition duration
+        }, 500); 
+        console.log(page_on)
     }
   }
 
 function createButton_in() {
-    d3.select('.zoom_in') // Select the container element
-      .append('button') // Append a button element
-      .text('Scope in') // Set the text content of the button
-      .on('click', handleClick_in) // Add a click event listener
-      .style('font-size', '28px') // Set the font size
-      .style('font-family', 'VT323, monospace') // Set the font family
-      .style('width', '130px') // Set the width of the button
-      .style('height', '45px') // Set the height of the button
-      .style('background-color', 'beige'); // Set the background color of the button
+    d3.select('.zoom_in') 
+      .append('button') 
+      .text('Scope in') 
+      .on('click', handleClick_in) 
+      .style('font-size', '28px') 
+      .style('font-family', 'VT323, monospace') 
+      .style('width', '130px') 
+      .style('height', '45px') 
+      .style('background-color', 'lavender'); 
 
   }
 
 function createButton_out() {
-    d3.select('.zoom_out') // Select the container element
-      .append('button') // Append a button element
-      .text('Scope out') // Set the text content of the button
-      .on('click', handleClick_out) // Add a click event listener
-      .style('font-size', '28px') // Set the font size
-      .style('font-family', 'VT323, monospace') // Set the font family
-      .style('width', '130px') // Set the width of the button
-      .style('height', '45px') // Set the height of the button
-      .style('background-color', 'beige'); // Set the background color of the button
+    d3.select('.zoom_out') 
+      .append('button') 
+      .text('Scope out') 
+      .on('click', handleClick_out) 
+      .style('font-size', '28px') 
+      .style('font-family', 'VT323, monospace') 
+      .style('width', '130px') 
+      .style('height', '45px') 
+      .style('background-color', 'lavender'); 
   }
 
 onMount(() => {
@@ -127,7 +153,9 @@ onMount(() => {
     <br><br>
     This visualization below is intended to show you how much these numbers of people can scale up to give you a better understanding of what a large population can look like.
     <br>
-    Click on the "Scope in" and "Scope out" buttons to toggle through the scale!
+    First, click on the "Scope in" and "Scope out" buttons to toggle through the scale!
+    <br>
+    You can also hover over on large numbers (highlighted in pink) and we'll explain the equivalent metric for these numbers!!
 </p>
 
 <div class = 'buttons'>
@@ -137,12 +165,13 @@ onMount(() => {
 
 <div class = 'content'>
 <svg {width} {height} viewBox="0 0 {width} {height}">
-    <g stroke="black" stroke-width="0.5" transform="translate(530, 40)" class = "layer" id = 'Row1'>
+    <g stroke="black" stroke-width="0.5" transform="translate(270, 100)" class = "layer" id = 'Row1'>
         <text transform="translate(100, 50)" font-size="75">{firstRow['Stat']}</text>
         <text font-size="25" transform="translate(0, 90)"> Description: {firstRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" transform="translate(330,40)" class = "layer" id = 'Row2'>
+    <g stroke="black" stroke-width="0.5" transform="translate(30,40)" class = "layer" id = 'Row2'>
         <g transform="translate(30, 0)">
+            let first = 1;
             {#each iterations10 as i, indexh}
                 {#each iterations10 as j, index}
                     <text x={index * spacingwidth_1} y={indexh * spacingheight_1}>{firstRow['Stat']}</text>
@@ -154,51 +183,115 @@ onMount(() => {
         </g>
         <text font-size="25" transform="translate(0, 220)"> Description: {secondRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row3' transform="translate(230,0)">
+    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row3' transform="translate(100,0)">
         <g transform="translate(30, 40)" font-size="20">
             {#each iterations5 as i, indexh}
                 {#each iterations6 as j, index}
-                    <text fill="blue" x={index * spacingwidth} y={indexh * spacingheight}>{secondRow['Stat']}</text>
+                    <!-- <text fill="blue" x={index * spacingwidth} y={indexh * spacingheight}>{secondRow['Stat']}</text> -->
+                    {#if i === 1 && j === 1}
+                        <text id = "scoping"fill="orange" x={index * spacingwidth} y={indexh * spacingheight}>{secondRow['Stat']}</text>
+                    {:else}
+                        <text fill="blue" x={index * spacingwidth} y={indexh * spacingheight}>{secondRow['Stat']}</text>
+                    {/if}
+
                 {/each}
             {/each}
         </g>
-        <g>
+        <g >
             <text font-size="50" transform="translate(400, 150)"> = </text>
-            <text font-size="40" transform="translate(450, 120)" fill="brown"> 30 rooms of DSC 106 student</text>
-            <text font-size="40" transform="translate(450, 180)" fill="brown"> 3K people</text>
+            <g>
+            <text font-size="40" transform="translate(450, 150)" fill="brown"> 3K people</text>
+            <rect x=445 y=110 width=190 height=55 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.3 role="presentation"/>
+            </g>
         </g>
-        <text font-size="25" transform="translate(0, 285)"> Description: {thirdRow['Data_descipt']}</text>
+        <text font-size="25" transform="translate(-80, 285)"> Description: {thirdRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row4' transform="translate(230,0)">
+    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row4' transform="translate(100,10)">
         <g transform="translate(10, 50)" font-size="25">
             {#each iterations4 as i, indexh}
                 {#each iterations6 as j, index}
-                    <text fill="brown" x={index * 65} y={indexh * spacingheight}>{thirdRow['Stat']}</text>
+                    {#if i === 1 && j ===1}
+                        <text id = "scoping" fill="blue" x={index * 65} y={indexh * spacingheight}>{thirdRow['Stat']}</text>
+                    {:else}
+                        <text fill="brown" x={index * 65} y={indexh * spacingheight}>{thirdRow['Stat']}</text>
+                    {/if}
                 {/each}
             {/each}
         </g>
         <g>
             <text font-size="50" transform="translate(400, 130)"> = </text>
-            <text font-size="40" transform="translate(450, 100)" fill="green"> 24 twitch streamer with 3000 views</text>
-            <text font-size="40" transform="translate(450, 160)" fill="green"> 70K people</text>
+            <g>
+                <text font-size="40" transform="translate(450, 130)" fill="green"> 70K people</text>
+                <rect x=445 y=90 width=210 height=55 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.3 role="presentation"/>
+            </g>
         </g>
         <text font-size="25" transform="translate(0, 240)"> Description: {forthRow['Data_descipt']}</text>
     </g>
-    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row5' transform="translate(330,0)">
+    <g stroke="black" stroke-width="0.5" class = "layer" id = 'Row5' transform="translate(80,10)">
         <g transform="translate(10, 50)" font-size="25">
             {#each iterations4 as i, indexh}
                 {#each iterations5 as j, index}
-                    <text fill="green" x={index * 80} y={indexh * spacingheight}>{forthRow['Stat']}</text>
+                    {#if i === 1 && j===1}
+                        <text id = "scoping" fill="rgba(245, 40, 145, 0.8)" x={index * 80} y={indexh * spacingheight}>{forthRow['Stat']}</text>
+                    {:else}
+                        <text fill="green" x={index * 80} y={indexh * spacingheight}>{forthRow['Stat']}</text>
+                    {/if}
                 {/each}
             {/each}
         </g>
         <g>
             <text font-size="50" transform="translate(410, 130)"> = </text>
-            <text font-size="40" transform="translate(460, 100)" fill="red"> 15 Sofi Stadium</text>
-            <text font-size="40" transform="translate(460, 160)" fill="red"> 1.3M  people</text>
+            <g>
+                <text font-size="40" transform="translate(460, 130)" fill="red"> 1.3M  people</text>
+                <rect x=455 y=90 width=235 height=55 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.3 role="presentation"/>
+            </g>    
         </g>
         <text font-size="25" transform="translate(10, 240)"> Description: {fifthRow['Data_descipt']}</text>
     </g>
+
+    {#if isHovered && page_on === 3}
+        <g transform="translate(600, 220)">
+            <rect x="0" y="-45" width="190" height="90" fill="lightyellow" stroke="yellow" />
+
+            <text x="35" y="-15" font-size="18" fill="black">Equivalates to...</text>
+
+            <text x="5" y="10" font-size="14" fill="black">30 rooms of DSC 106 student </text>
+            <text x="30" y="25" font-size="14" fill="black">watching the demo!!</text>
+        </g>
+    {/if}
+    {#if isHovered && page_on === 4}
+        <g transform="translate(600, 220)">
+            <rect x="0" y="-45" width="190" height="120" fill="lightyellow" stroke="yellow" />
+
+            <text x="35" y="-25" font-size="18" fill="black">Equivalates to...</text>
+
+            <text x="20" y="0" font-size="14" fill="black">24 twitch streemers with</text>
+            <text x="40" y="15" font-size="14" fill="black">3000 daily views</text>
+
+            <text x="80" y="35" font-size="16" fill="black">OR</text>
+
+            <text x="30" y="50" font-size="14" fill="black">700 rooms of DSC 106</text>
+            <text x="5" y="65" font-size="14" fill="black">student watching the demo!!</text>
+        </g>
+    {/if}
+    {#if isHovered && page_on === 5}
+        <g transform="translate(600, 220)">
+            <rect x="-100" y="-45" width="290" height="140" fill="lightyellow" stroke="yellow" />
+
+            <text x="-15" y="-25" font-size="18" fill="black">Equivalates to...</text>
+
+            <text x="0" y="0" font-size="14" fill="black">20 Sofi Stadium</text>
+
+            <text x="30" y="20" font-size="16" fill="black">OR</text>
+
+            <text x="-85" y="35" font-size="14" fill="black">440 twitch streemers with 3000 daily views</text>
+
+            <text x="30" y="55" font-size="16" fill="black">OR</text>
+
+            <text x="-45" y="70" font-size="14" fill="black">13000 rooms of DSC 106 student </text>
+            <text x="-10" y="85" font-size="14" fill="black">watching the demo!!</text>
+        </g>
+    {/if}
 </svg>
 </div>
 
@@ -208,26 +301,26 @@ onMount(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px; /* Set a fixed height for the container */
+    height: 80px; 
 }
 
 .zoom_in{
-    width: 150px; /* Set width of each button */
-    height: 70px; /* Set height of each button */
-    margin-right: 50px; /* Add some margin between buttons */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    display: flex; /* Use flexbox layout for buttons */
+    width: 150px; 
+    height: 70px;
+    margin-right: 50px; 
+    justify-content: center; 
+    align-items: center; 
+    display: flex; 
 
     
 }
 .zoom_out {
-    width: 150px; /* Set width of each button */
-    height: 70px; /* Set height of each button */
-    margin-right: 14px; /* Add some margin between buttons */
-    display: flex; /* Use flexbox layout for buttons */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    width: 150px; 
+    height: 70px;
+    margin-right: 14px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
 
 #Row2,
