@@ -1,6 +1,5 @@
 <script>
   import Moneybox from './Moneybox.svelte';
-    import Moneybox2 from './Moneybox2.svelte';
   let type;
   let def_height = 300;
   let sm_height = 600;
