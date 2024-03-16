@@ -153,7 +153,9 @@ onMount(() => {
     <br><br>
     This visualization below is intended to show you how much these numbers of people can scale up to give you a better understanding of what a large population can look like.
     <br>
-    Click on the "Scope in" and "Scope out" buttons to toggle through the scale!
+    First, click on the "Scope in" and "Scope out" buttons to toggle through the scale!
+    <br>
+    You can also hover over on large numbers (highlighted in pink) and we'll explain the equivalent metric for these numbers!!
 </p>
 
 <div class = 'buttons'>
@@ -199,7 +201,7 @@ onMount(() => {
             <text font-size="50" transform="translate(400, 150)"> = </text>
             <g>
             <text font-size="40" transform="translate(450, 150)" fill="brown"> 3K people</text>
-            <rect x=445 y=110 width=190 height=55 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.2 role="presentation"/>
+            <rect x=445 y=110 width=190 height=55 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.3 role="presentation"/>
             </g>
         </g>
         <text font-size="25" transform="translate(-80, 285)"> Description: {thirdRow['Data_descipt']}</text>
@@ -220,7 +222,7 @@ onMount(() => {
             <text font-size="50" transform="translate(400, 130)"> = </text>
             <g>
                 <text font-size="40" transform="translate(450, 130)" fill="green"> 70K people</text>
-                <rect x=445 y=90 width=210 height=55 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.2 role="presentation"/>
+                <rect x=445 y=90 width=210 height=55 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.3 role="presentation"/>
             </g>
         </g>
         <text font-size="25" transform="translate(0, 240)"> Description: {forthRow['Data_descipt']}</text>
@@ -241,7 +243,7 @@ onMount(() => {
             <text font-size="50" transform="translate(410, 130)"> = </text>
             <g>
                 <text font-size="40" transform="translate(460, 130)" fill="red"> 1.3M  people</text>
-                <rect x=455 y=90 width=235 height=55 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.2 role="presentation"/>
+                <rect x=455 y=90 width=235 height=55 fill={isHovered ? 'blue' : 'pink'} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:mousemove={updateTooltipPosition} on:focus={handleMouseOver} on:blur={handleMouseOut} opacity = 0.3 role="presentation"/>
             </g>    
         </g>
         <text font-size="25" transform="translate(10, 240)"> Description: {fifthRow['Data_descipt']}</text>
@@ -276,7 +278,7 @@ onMount(() => {
         <g transform="translate(600, 220)">
             <rect x="-100" y="-45" width="290" height="140" fill="lightyellow" stroke="yellow" />
 
-            <text x="-10" y="-25" font-size="18" fill="black">Equivalates to...</text>
+            <text x="-15" y="-25" font-size="18" fill="black">Equivalates to...</text>
 
             <text x="0" y="0" font-size="14" fill="black">20 Sofi Stadium</text>
 
