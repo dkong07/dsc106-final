@@ -1,5 +1,6 @@
 <script>
   import Moneybox from './Moneybox.svelte';
+    import Moneybox2 from './Moneybox2.svelte';
   let type;
   let def_height = 300;
   let sm_height = 600;
@@ -12,8 +13,9 @@
   let bills_big = [{x1: 0, x2: 95, w:50},{x1: 100, x2: 195, w:50},{x1: 200, x2: 295, w:50},{x1: 300, x2: 395, w:50},{x1: 400, x2: 495, w:50},
   {x1: 500, x2: 595, w:50},{x1: 700, x2: 795, w:50},{x1: 600, x2: 695, w:50},{x1: 800, x2: 895, w:50},{x1: 900, x2: 995, w:50}];
 
-  
-  
+  var b = Array.from(Array(20).keys()).map(function(x) { return x * 50; });
+  let twentybills = b.map(val => ({ x1: val, x2: val+45, w:25 }))
+
   var a = Array.from(Array(100).keys()).map(function(x) { return x * 10; });
   let tinybills = a.map(val => ({ x1: val, x2: val+8, w:3 }))
   
@@ -27,7 +29,7 @@
   let def_rows = [0]
   let two_rows =[0,1]
   let ten_rows = [0,1,2,3,4,5,6,7,8,9]
-  let five_rows = [0,1,2,3,4,5];
+  let five_rows = [0,1,2,3,4];
   let fifty = Array.from(Array(50).keys())
   let header1 = '$1000'
   let body1 = 'A good amount of money that no one would complain about, but fairly common.'
@@ -48,10 +50,10 @@
 <main>
   <div class="greet">
     <h1>The scale of money</h1>
-    <p>To help conceptualize how much X dollars is, the user will scroll down the page
-      while Y dollar bills draw in section by section. </p>
+    <p>To help conceptualize how much a certain amount of dollars is, the user will scroll down the page
+      while representative dollar bills draw in section by section. </p>
     <p>
-      X is an amount of money that can easily change the average person's life, especially if they are struggling.
+      Any amount of money could change someone's life and be meaningless to another. Let's scale these values so that they're easier to understand.
     </p>
   </div>
   <!--1000 bucks-->
@@ -108,12 +110,12 @@
 
   main {
     text-align: center;
-    padding: 0 1em;
+    padding: 0 0.1em;
     margin: 0 auto;
   }
 
   h1 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
   }
 
   p {
