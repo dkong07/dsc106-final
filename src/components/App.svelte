@@ -25,6 +25,7 @@
   <div class = "intro">
   <h1 class = 'Title'>Visualizing Numbers</h1>
   <h4>Group name: SEAL TEAM 420 <br> Member: Hunter Brownell, Daniel Kong, Jill Nomura</h4>
+  <h5><a href="https://www.youtube.com/watch?v=5hLvVdBmpGg">Link to the Demo Video</a>
 
   <br>
   <h3>Introduction</h3>
