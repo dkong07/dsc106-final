@@ -89,6 +89,9 @@
     bind:speed={speedmod} />
   </div>
  <!--v2 50,000 bucks-->
+  <p>
+  Give the last visualization below a few seconds to load.
+  </p>
   <div class="full-height">
     <Moneybox
     bind:bills={tinybills}
